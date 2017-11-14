@@ -2,32 +2,31 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
-public class SupprimerPizzaOptionMenu {
-	//afficher le menu
-	for (int i = 0; i < pizzas.length; i++) {
-		if (pizzas[i] != null) {
-			System.out.println(pizzas[i].code + "->" + pizzas[i].nom + "(" + pizzas[i].prix + "€" + ")");
-		}
+import fr.pizzeria.dao.IPizzaDao;
+
+public class SupprimerPizzaOptionMenu extends OptionMenu {
+	
+	private IPizzaDao dao;
+	
+	public SupprimerPizzaOptionMenu(IPizzaDao dao) {
+		this.dao = dao;
 	}
 	
-	System.out.println("Veillez choisir un pizza à supprimer");
-	
-	//entrée pizza a supprimer
-	Scanner sc5 = new Scanner(System.in);
-	String codeSupprimer = sc5.nextLine();
-	Pizza pizzaSupprimer = null;
-	
-	for (int i = 0; i < pizzas.length; i++) {
-		if (pizzas[i] != null && codeSupprimer.equals(pizzas[i].code)) {
-			pizzas[i] = null;
+	public boolean execute() {
+		// afficher le menu
+		Pizza[] pizzas = dao.findAllPizzas();
+		for (int i = 0; i < pizzas.length; i++) {
+			if (pizzas[i] != null) {
+				System.out.println(pizzas[i].getCode() + "->" + pizzas[i].getNom() + "(" + pizzas[i].getPrix() + "€" + ")");
+			}
 		}
+		
+		System.out.println("Veillez choisir un pizza à supprimer");
+		
+		// entrée pizza a supprimer
+		Scanner sc5 = new Scanner(System.in);
+		String codeSupprimer = sc5.nextLine();
+		dao.deletePizza(codeSupprimer);
+		return true;
 	}
-	
-	//afficher le menu
-	for (int i = 0; i < pizzas.length; i++) {
-		if (pizzas[i] != null) {
-			System.out.println(pizzas[i].code + "->" + pizzas[i].nom + "(" + pizzas[i].prix + "€" + ")");
-		}
-	}
-	break;
 }
