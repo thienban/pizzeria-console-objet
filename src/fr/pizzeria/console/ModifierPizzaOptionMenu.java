@@ -1,5 +1,7 @@
 package fr.pizzeria.console;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
@@ -16,7 +18,7 @@ public class ModifierPizzaOptionMenu extends OptionMenu {
 	public boolean execute() throws UpdatePizzaException{
 		// afficher le menu
 		
-		Pizza[] pizzas = dao.findAllPizzas();
+		List<Pizza> pizzas = dao.findAllPizzas();
 		for (int i = 0; i < pizzas.length; i++) {
 			if (pizzas[i] != null) {
 				System.out.println(pizzas[i].getCode() + "->" + pizzas[i].getNom() + "(" + pizzas[i].getPrix() + "€" + ")");
