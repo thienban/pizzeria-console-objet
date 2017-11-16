@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoTableau;
 import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.PizzaDontMatchException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.UpdatePizzaException;
 
@@ -19,10 +20,10 @@ public class Menu {
 				{
 				// affichage menu
 				System.out.println("***** Pizzeria Administration *****\r\n" + "1. Lister les pizzas\r\n"
-						+ "2. Ajouter une nouvelle pizza\r\n" + "3. Mettre à jour une pizza\r\n" + "4. Supprimer une pizza\r\n"
+						+ "2. Ajouter une nouvelle pizza\r\n" + "3. Mettre ï¿½ jour une pizza\r\n" + "4. Supprimer une pizza\r\n"
 						+ "99. Sortir");
 
-				// lire entrée
+				// lire entrï¿½e
 				Scanner sc = new Scanner(System.in);
 				String choix = sc.nextLine();
 
@@ -39,6 +40,9 @@ public class Menu {
 						ajouter.execute();
 						} catch (SavePizzaException e) {
 							System.out.println(e.getMessage());
+						} catch (PizzaDontMatchException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
 						break;
 						
@@ -47,8 +51,11 @@ public class Menu {
 						ModifierPizzaOptionMenu modifier = new ModifierPizzaOptionMenu(dao);
 						try {
 							modifier.execute();
-						} catch (UpdatePizzaException e) {
+						} catch (PizzaDontMatchException e) {
 							System.out.println(e.getMessage());//afficher le message erreur
+						} catch (UpdatePizzaException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
 	
 						break;
@@ -59,6 +66,9 @@ public class Menu {
 						supprimer.execute(); 
 						} catch (DeletePizzaException e) {
 							System.out.println(e.getMessage());
+						} catch (PizzaDontMatchException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
 						break;
 					case "99":
