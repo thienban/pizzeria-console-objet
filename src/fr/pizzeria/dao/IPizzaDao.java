@@ -8,7 +8,7 @@ import fr.pizzeria.console.Pizza;
 
 public interface IPizzaDao {
 
-	List<Pizza> findAllPizzas();
+	List<Pizza> pizzas findAllPizzas();
 
 	boolean saveNewPizza(Pizza pizza);
 
