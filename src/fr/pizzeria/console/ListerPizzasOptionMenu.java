@@ -3,20 +3,14 @@ package fr.pizzeria.console;
 import fr.pizzeria.dao.IPizzaDao;
 
 public class ListerPizzasOptionMenu extends OptionMenu {
-	
-	private IPizzaDao dao;
-	
+		
 	public ListerPizzasOptionMenu(IPizzaDao dao) {
-		this.dao = dao;
+		super(dao);
 	}
 	
 	public boolean execute() {
-		
-		Pizza[] pizzas = dao.findAllPizzas();
-		for (int i = 0; i < pizzas.length; i++) {
-			if (pizzas[i] != null) {
-				System.out.println(pizzas[i].getCode() + "->" + pizzas[i].getNom() + "(" + pizzas[i].getPrix() + "€" + ")");
-			}
+		for(Pizza p:dao.findAllPizzas()) {
+			if(p!=null) System.out.println(p.getCode() + " -> " + p.getNom() + "(" + p.getPrix());
 		}
 		return true; 
 	}

@@ -13,14 +13,14 @@ public class PizzaDaoTableau implements IPizzaDao {
 
 	public PizzaDaoTableau() {
 		pizzas = new ArrayList<Pizza>();
-		pizzas.add(new Pizza(0, "PEP", "Pépéroni", 12.50));
-		pizzas.add(new Pizza(1, "MAR", "Margherita", 14.00));
-		pizzas.add(new Pizza(2, "REIN", "La Reine", 11.50));
-		pizzas.add(new Pizza(3, "FRO", "La 4 fromage", 12.00));
-		pizzas.add(new Pizza(4, "CAN", "La cannibale", 12.50));
-		pizzas.add(new Pizza(5, "SAV", "La savoyarde", 13.00));
-		pizzas.add(new Pizza(6, "ORI", "L'orientale", 13.50));
-		pizzas.add(new Pizza(7, "IND", "L'indienne", 14.00));
+		pizzas.add(new Pizza( "PEP", "Pï¿½pï¿½roni", 12.50));
+		pizzas.add(new Pizza( "MAR", "Margherita", 14.00));
+		pizzas.add(new Pizza( "REIN", "La Reine", 11.50));
+		pizzas.add(new Pizza( "FRO", "La 4 fromage", 12.00));
+		pizzas.add(new Pizza( "CAN", "La cannibale", 12.50));
+		pizzas.add(new Pizza( "SAV", "La savoyarde", 13.00));
+		pizzas.add(new Pizza( "ORI", "L'orientale", 13.50));
+		pizzas.add(new Pizza( "IND", "L'indienne", 14.00));
 	}
 
 	public List<Pizza> findAllPizzas() {

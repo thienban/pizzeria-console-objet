@@ -1,9 +1,9 @@
 package fr.pizzeria.console;
 
-//déclaration class pizza
+//dï¿½claration class pizza
 public class Pizza {
 	// Stocke id
-	private int id;
+	public static int numOfPizzas=0;
 	// Stocke code
 	private String code;
 	// Stocke nom
@@ -12,20 +12,12 @@ public class Pizza {
 	private double prix;
 
 	//constructeur
-	public Pizza(int id, String code, String nom, double prix) {
-		this.id = id;
+	public Pizza(String code, String nom, double prix) {
+		numOfPizzas++;
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
-
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		System.out.println("il ya " + Pizza.numOfPizzas + " pizzas");
 	}
 
 	public String getCode() {
