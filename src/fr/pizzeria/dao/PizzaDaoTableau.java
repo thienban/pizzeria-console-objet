@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.console.Pizza;
+import fr.pizzeria.model.CategoriePizza.CategoriePizza;
 
 public class PizzaDaoTableau implements IPizzaDao {
 
@@ -12,14 +13,14 @@ public class PizzaDaoTableau implements IPizzaDao {
 
 	public PizzaDaoTableau() {
 		pizzas = new ArrayList<Pizza>();
-		pizzas.add(new Pizza( "PEP", "P�p�roni", 12.50));
-		pizzas.add(new Pizza( "MAR", "Margherita", 14.00));
-		pizzas.add(new Pizza( "REIN", "La Reine", 11.50));
-		pizzas.add(new Pizza( "FRO", "La 4 fromage", 12.00));
-		pizzas.add(new Pizza( "CAN", "La cannibale", 12.50));
-		pizzas.add(new Pizza( "SAV", "La savoyarde", 13.00));
-		pizzas.add(new Pizza( "ORI", "L'orientale", 13.50));
-		pizzas.add(new Pizza( "IND", "L'indienne", 14.00));
+		pizzas.add(new Pizza( "PEP", "P�p�roni", 12.50,CategoriePizza.VIANDE));
+		pizzas.add(new Pizza( "MAR", "Margherita", 14.00,CategoriePizza.VIANDE));
+		pizzas.add(new Pizza( "REIN", "La Reine", 11.50,CategoriePizza.VIANDE));
+		pizzas.add(new Pizza( "FRO", "La 4 fromage", 12.00, CategoriePizza.SANS_VIANDE));
+		pizzas.add(new Pizza( "CAN", "La cannibale", 12.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza( "SAV", "La savoyarde", 13.00, CategoriePizza.SANS_VIANDE));
+		pizzas.add(new Pizza( "ORI", "L'orientale", 13.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza( "IND", "L'indienne", 14.00, CategoriePizza.VIANDE));
 	}
 
 	public List<Pizza> findAllPizzas() {

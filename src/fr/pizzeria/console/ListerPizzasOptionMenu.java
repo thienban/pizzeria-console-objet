@@ -10,7 +10,7 @@ public class ListerPizzasOptionMenu extends OptionMenu {
 	
 	public boolean execute() {
 		for(Pizza p:dao.findAllPizzas()) {
-			if(p!=null) System.out.println(p.getCode() + " -> " + p.getNom() + "(" + p.getPrix());
+			if(p!=null) System.out.println(p);
 		}
 		return true; 
 	}
