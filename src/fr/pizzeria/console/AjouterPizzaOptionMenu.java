@@ -46,7 +46,7 @@ public class AjouterPizzaOptionMenu extends OptionMenu {
 		}
 		// Saisir la catégorie Pizza
 		System.out.println(
-		"Veuillez saisir la catégorie du pizza (1 pour sans Viande, 2 pour Poisson, 3 pour sans viande");
+		"Veuillez saisir la catégorie du pizza (1 pour Viande, 2 pour Poisson, 3 pour sans viande");
 		String choixCategorie = sc.nextLine();
 		CategoriePizza categorie;
 		switch (choixCategorie) {

@@ -1,29 +1,31 @@
 package fr.pizzeria.console;
 
+import java.lang.reflect.Field;
+
 import fr.pizzeria.model.CategoriePizza.CategoriePizza;
 
 //dï¿½claration class pizza
 public class Pizza {
 	// Stocke id
-	public static int numOfPizzas=0;
+	private int id;
 	// Stocke code
-	@ToString(separateur= " -> ")
+	@ToString(uppercase= true,symbol="=>")
 	private String code;
 	// Stocke nom
-	@ToString
+	@ToString()
 	private String nom;
 	// Stocke prix
+	@ToString(symbol = " €", surroundedBefore = "( ", surroundedAfter = " )")
 	private double prix;
+	@ToString()
 	private CategoriePizza categorie;
 	
 	//constructeur
 	public Pizza(String code, String nom, double prix,CategoriePizza categorie) {
-		numOfPizzas++;
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
 		this.categorie = categorie;
-		System.out.println("il ya " + Pizza.numOfPizzas + " pizzas");
 	}
 
 	public String getCode() {
@@ -57,7 +59,25 @@ public class Pizza {
 	public void setCategorie(CategoriePizza categorie) {
 		this.categorie = categorie;
 	}
-	public String toString () {
-		return this.code + this.nom + " (" + this.prix + ") " + this.categorie; 
+	public String toString() {
+		String pizzaString = "";
+		for (Field attribute : this.getClass().getDeclaredFields()) {
+			if (attribute.isAnnotationPresent(ToString.class)) {
+				ToString tostr = (ToString) attribute.getAnnotation(ToString.class);
+				try {
+					String fieldValue = attribute.get(this).toString();
+					if (tostr.uppercase()) {
+						fieldValue = fieldValue.toUpperCase();
+					}
+					fieldValue = tostr.surroundedBefore() + fieldValue + tostr.symbol() + tostr.surroundedAfter();
+					pizzaString += fieldValue;
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return pizzaString.trim().replace("_", " ");
 	}
 }

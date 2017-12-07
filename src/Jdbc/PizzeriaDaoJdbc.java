@@ -62,7 +62,7 @@ public class PizzeriaDaoJdbc implements IPizzaDao {
 			/* Fermeture du Statement */
 			statement.close();
 		} catch (SQLException e) {
-			se.printStackTrace();
+			e.printStackTrace();
 		}
 
 		/* On retourne la liste de pizzas qui contient toutes les pizzas en base !!! */
@@ -87,7 +87,7 @@ public class PizzeriaDaoJdbc implements IPizzaDao {
 
 	public boolean updatePizza(String codePizza, Pizza pizza) {
 		try {
-			PreparedStatement prepStat = conn.prepareStatement("UPDATE pizza SET code=?, nom = ?, prix = ?, categorie = ?, WHERE code = ?");
+			PreparedStatement prepStat = conn.prepareStatement("UPDATE pizza SET code=?, nom = ?, prix = ?, categorie = ? WHERE code = ?");
 			prepStat.setString(1, pizza.getCode());
 			prepStat.setString(2, pizza.getNom());
 			prepStat.setDouble(3, pizza.getPrix());

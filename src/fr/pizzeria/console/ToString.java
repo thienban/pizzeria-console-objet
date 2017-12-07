@@ -17,6 +17,11 @@ import java.lang.annotation.Target;
  */
 public @interface ToString {
 
-	String separateur() default "";
-	
+	boolean uppercase() default false;
+
+	String symbol() default "";
+
+	String surroundedBefore() default " ";
+
+	String surroundedAfter() default " ";
 }
