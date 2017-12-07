@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import Jdbc.PizzeriaDaoJdbc;
+import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaDaoTableau;
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.PizzaDontMatchException;
@@ -16,7 +18,7 @@ public class Menu {
 	public void afficher() {
 
 		// tableau pizzas
-		PizzaDaoTableau dao = new PizzaDaoTableau();
+		IPizzaDao dao = new PizzeriaDaoJdbc();
 
 		boolean continuer = true;
 		Scanner sc = new Scanner(System.in);

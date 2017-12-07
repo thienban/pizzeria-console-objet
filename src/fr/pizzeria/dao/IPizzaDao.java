@@ -8,11 +8,15 @@ import fr.pizzeria.console.Pizza;
 
 public interface IPizzaDao {
 
+	// READ
 	List<Pizza> findAllPizzas();
 
+	// CREATE
 	boolean saveNewPizza(Pizza pizza);
 
+	// UPDATE
 	boolean updatePizza(String codePizza, Pizza pizza);
 
+	// DELETE
 	boolean deletePizza(String codePizza);
 }
